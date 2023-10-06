@@ -6,7 +6,7 @@ const getPageContents = (slug: string) => {
     const pathToPost = "posts/" + slug + ".md";
     const markdown = fs.readFileSync(pathToPost, "utf8");
     const file = matter(markdown);
-    console.log(markdown);
+    console.log(file);
     return file;
 };
 
