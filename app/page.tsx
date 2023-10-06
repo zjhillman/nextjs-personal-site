@@ -1,5 +1,7 @@
 import fs from "fs";
 import Link from "next/link";
+import matter from "gray-matter";
+import MarkDown from "markdown-to-jsx";
 
 const getPostMetaData = () => {
   const folder = "posts/";
@@ -9,16 +11,35 @@ const getPostMetaData = () => {
   return slugs;
 };
 
+const getMarkdownPost = (slug) => {
+  const pathToFile = `posts/${slug}.md`;
+  const file = matter.read(pathToFile);
+  return file;
+}
+
 const HomePage = () => {
   const postMetaData = getPostMetaData();
-  const postPreviews = postMetaData.map((slug) => (
-    <div>
+  const postPreviews = postMetaData.map((slug) => {
+    const post = getMarkdownPost(slug);
+    const postDate = post.data.date.toLocaleString();
+    const postPreview = <div>
       <Link href={`/posts/${slug}`}>
-        <h2>{slug}</h2>
+        <h1>{post.data.title}</h1>
       </Link>
-    </div>
-  ));
+      <h2>{postDate}</h2>
+      <h2>{post.data.subtitle}</h2>
+    </div>;
+    return postPreview;
+  });
   return <div>{postPreviews}</div>;
 };
 
 export default HomePage;
+
+// (
+//   <div>
+//     <Link href={`/posts/${slug}`}>
+//       <h2>{slug}</h2>
+//     </Link>
+//   </div>
+// )

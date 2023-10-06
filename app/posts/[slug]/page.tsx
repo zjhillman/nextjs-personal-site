@@ -6,18 +6,20 @@ const getPageContents = (slug: string) => {
     const pathToPost = "posts/" + slug + ".md";
     const markdown = fs.readFileSync(pathToPost, "utf8");
     const file = matter(markdown);
-    console.log(file);
     return file;
 };
 
 const PostPage = (props: any) => {
     const slug = props.params.slug;
-    const content = getPageContents(slug);
+    const page = getPageContents(slug);
+    const datePosted = page.data.date.toLocaleString();
     return (
         <div>
-            <h1>{slug}</h1>
+            <h1>{page.data.title}</h1>
+            <h2>{datePosted}</h2>
+            <h2>{page.data.subtitle}</h2>
             <br />
-            <Markdown>{content.content}</Markdown>
+            <Markdown>{page.content}</Markdown>
         </div>
     );
 };
