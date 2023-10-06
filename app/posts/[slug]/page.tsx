@@ -18,7 +18,9 @@ const PostPage = (props: any) => {
             <h1 className="text-2xl underline">{page.data.title}</h1>
             <h2 className="text-xs text-red-400">{datePosted}</h2>
             <h2 className="mb-4">{page.data.subtitle}</h2>
-            <Markdown>{page.content}</Markdown>
+            <article className="prose lg:prose-xl text-gray-300">
+                <Markdown>{page.content}</Markdown>
+            </article>
         </div>
     );
 };
