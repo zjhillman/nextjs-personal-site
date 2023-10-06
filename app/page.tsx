@@ -3,7 +3,7 @@ import Link from "next/link";
 import matter from "gray-matter";
 import MarkDown from "markdown-to-jsx";
 
-const getPostMetaData = () => {
+const getSlugs = () => {
   const folder = "posts/";
   const files = fs.readdirSync(folder);
   const markdownPosts = files.filter((file) => file.endsWith(".md"));
@@ -11,24 +11,24 @@ const getPostMetaData = () => {
   return slugs;
 };
 
-const getMarkdownPost = (slug) => {
+const getPostData = (slug: string) => {
   const pathToFile = `posts/${slug}.md`;
   const file = matter.read(pathToFile);
   return file;
 }
 
 const HomePage = () => {
-  const postMetaData = getPostMetaData();
+  const postMetaData = getSlugs();
   const postPreviews = postMetaData.map((slug) => {
-    const post = getMarkdownPost(slug);
+    const post = getPostData(slug);
     const postDate = post.data.date.toLocaleString();
-    const postPreview = <div>
+    const postPreview = (<div className="my-2 p-2 mx-auto max-w-xl ">
       <Link href={`/posts/${slug}`}>
-        <h1>{post.data.title}</h1>
+        <h1 className="text-xl font-bold hover:underline hover:text-red-400">{post.data.title}</h1>
       </Link>
-      <h2>{postDate}</h2>
-      <h2>{post.data.subtitle}</h2>
-    </div>;
+      <h2 className="text-xs text-gray-500">{postDate}</h2>
+      <h2 className="text-sm text-gray-200">{post.data.subtitle}</h2>
+    </div>);
     return postPreview;
   });
   return <div>{postPreviews}</div>;

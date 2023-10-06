@@ -14,7 +14,7 @@ const PostPage = (props: any) => {
     const page = getPageContents(slug);
     const datePosted = page.data.date.toLocaleString();
     return (
-        <div>
+        <div className="m-auto mw-sm">
             <h1>{page.data.title}</h1>
             <h2>{datePosted}</h2>
             <h2>{page.data.subtitle}</h2>
