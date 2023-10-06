@@ -19,7 +19,7 @@ export default function RootLayout({
     <header>
       <div className="bg-red-700 p-2 text-center">
         <Link href="/">
-          <h1 className="text-xl font-bold">Zachil's Blog</h1> 
+          <h1 className="text-xl font-bold hover:underline">Zach's Blog</h1> 
         </Link>
         <p className="text-sm">🔥Welcome to my nerd blog 💻</p>
       </div>
@@ -37,9 +37,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {header}
-        {children}
-        {footer}
+        <div>
+          {header}
+          {children}
+          {footer}
+        </div>
       </body>
     </html>
   )

@@ -1,7 +1,6 @@
 import fs from "fs";
 import Link from "next/link";
 import matter from "gray-matter";
-import MarkDown from "markdown-to-jsx";
 
 const getSlugs = () => {
   const folder = "posts/";
@@ -35,11 +34,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-// (
-//   <div>
-//     <Link href={`/posts/${slug}`}>
-//       <h2>{slug}</h2>
-//     </Link>
-//   </div>
-// )
