@@ -19,42 +19,43 @@ const getPostData = (slug: string) => {
 const sortPostData = (unsortedPosts: GrayMatterFile<string>[]) => {
   const arrayLength = unsortedPosts.length;
   var sortedPosts: GrayMatterFile<string>[] = new Array(arrayLength);
+  console.log(sortedPosts[0] !== undefined && sortedPosts[0] !== null);
 
+  // loop through old array and compare dates to items in the sorted array
+  // on first index, immediately copy first element into sorted array
+  // loop through sorted array comparing to every element until appropriate spot is found
+  // move every element up one item until the array ends
   for(var i = 0; i < arrayLength; i++) {
     if (i == 0) {
-      console.log("putting " + unsortedPosts[i] + " at index " + i);
       sortedPosts[0] = unsortedPosts[i];
       continue;
     }
-    for(var j = 0; j < arrayLength; j++) {
-      const unsortedDate = unsortedPosts[i].data.date.getTime();
-      const sortedDate = sortedPosts[j].data.date.getTime();
 
-      if (unsortedDate < sortedDate)
+    const date0 = unsortedPosts[i].data.date;
+    var storage0: matter.GrayMatterFile<string>;
+    for (var j = 0; j < arrayLength; j++) {
+      if (sortedPosts[j] == undefined || sortedPosts[j] == null)
+        break;
+
+      const date1 = sortedPosts[j].data.date;
+      // continue to increment the sorted array until the new date is older than the sorted date
+      // place the current, sorted element into storage, place the new element into the current index in storage
+      // then place the element in storage into the next index
+      if (date1 < date0) 
         continue;
-      else if (j + 1 < arrayLength) {
-        var storage0 = sortedPosts[j+1];
-        console.log("putting " + unsortedPosts[i].data.title + " at index " + j);
+      else {
+        storage0 = sortedPosts[j];
         sortedPosts[j] = unsortedPosts[i];
-        for (var k = j+1; k < arrayLength; k++) {
-          if (sortedPosts[k+1] !== null) {
-            sortedPosts[k] = storage0;
-            break;
-          }
-          else {
-            const storage1 = sortedPosts[k];
-            sortedPosts[k] = storage0;
-            storage0 = storage1;
-          }
+        if (sortedPosts[j+1] == undefined || sortedPosts[j+1] == null)
+          sortedPosts[j+1] = storage0;
+        else {
+
         }
-        
-        sortedPosts[j+1] = unsortedPosts[i];
       }
-      else 
-        sortedPosts[j] = unsortedPosts[i];
-      //console.log();
     }
+
   }
+  console.log(sortedPosts);
   return sortedPosts;
 };
 
