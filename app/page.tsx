@@ -17,22 +17,45 @@ const getPostData = (slug: string) => {
 };
 
 const sortPostData = (unsortedPosts: GrayMatterFile<string>[]) => {
-  var sortedPosts: GrayMatterFile<string>[] = new Array(unsortedPosts.length);
+  const arrayLength = unsortedPosts.length;
+  var sortedPosts: GrayMatterFile<string>[] = new Array(arrayLength);
 
-  for(var i = 0; i < unsortedPosts.length; i++) {
+  for(var i = 0; i < arrayLength; i++) {
     if (i == 0) {
-      sortedPosts.push(unsortedPosts[i]);
+      console.log("putting " + unsortedPosts[i] + " at index " + i);
+      sortedPosts[0] = unsortedPosts[i];
       continue;
     }
-    for(var j = 0; j < sortedPosts.length; j++) {
+    for(var j = 0; j < arrayLength; j++) {
       const unsortedDate = unsortedPosts[i].data.date.getTime();
       const sortedDate = sortedPosts[j].data.date.getTime();
 
       if (unsortedDate < sortedDate)
         continue;
-      //else if 
+      else if (j + 1 < arrayLength) {
+        var storage0 = sortedPosts[j+1];
+        console.log("putting " + unsortedPosts[i].data.title + " at index " + j);
+        sortedPosts[j] = unsortedPosts[i];
+        for (var k = j+1; k < arrayLength; k++) {
+          if (sortedPosts[k+1] !== null) {
+            sortedPosts[k] = storage0;
+            break;
+          }
+          else {
+            const storage1 = sortedPosts[k];
+            sortedPosts[k] = storage0;
+            storage0 = storage1;
+          }
+        }
+        
+        sortedPosts[j+1] = unsortedPosts[i];
+      }
+      else 
+        sortedPosts[j] = unsortedPosts[i];
+      //console.log();
     }
   }
+  return sortedPosts;
 };
 
 const HomePage = () => {
