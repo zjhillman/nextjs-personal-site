@@ -20,8 +20,8 @@ const HomePage = () => {
   const postMetaData = getSlugs();
   const postPreviews = postMetaData.map((slug) => {
     const post = getPostData(slug);
-    const postDate = post.data.date.toLocaleString();
-    const postPreview = (<div className="my-2 p-2 mx-auto max-w-xl ">
+    const postDate = new Date(post.data.date).toDateString();
+    const postPreview = (<div className="my-2 p-2 mx-auto max-w-2xl ">
       <Link href={`/posts/${slug}`}>
         <h1 className="text-xl font-bold hover:underline hover:text-red-400">{post.data.title}</h1>
       </Link>
