@@ -16,47 +16,59 @@ const getPostData = (slug: string) => {
   return file;
 };
 
-const sortPostData = (unsortedPosts: GrayMatterFile<string>[]) => {
-  const arrayLength = unsortedPosts.length;
-  var sortedPosts: GrayMatterFile<string>[] = new Array(arrayLength);
-  console.log(sortedPosts[0] !== undefined && sortedPosts[0] !== null);
+// sort the input array of graymatter objects so that the highest (most recent) date is at the top
+// @var     unsortedArr    GrayMatterFile[]    contains markdown data as a GrayMatter plugin object
+// @returns sortedArr      GrayMatterFile[]    elements of markdown data sorted by most recent date     
+const sortPostData = (unsortedArr: GrayMatterFile<string>[]) => {
+  const arrayLength = unsortedArr.length;
+  var sortedArr: GrayMatterFile<string>[] = new Array();
 
   // loop through old array and compare dates to items in the sorted array
   // on first index, immediately copy first element into sorted array
   // loop through sorted array comparing to every element until appropriate spot is found
   // move every element up one item until the array ends
-  for(var i = 0; i < arrayLength; i++) {
-    if (i == 0) {
-      sortedPosts[0] = unsortedPosts[i];
+  for (var i = 0; i < arrayLength; i++) {
+    if (sortedArr.length = 0) {
+      sortedArr.push(unsortedArr[i]);
       continue;
     }
+    
+    for (var j = 0; j < sortedArr.length; j++) {
+      const unsortedDate = unsortedArr[i].data.date.getTime();
+      const sortedDate = sortedArr[j].data.date.getTime();
 
-    const date0 = unsortedPosts[i].data.date;
-    var storage0: matter.GrayMatterFile<string>;
-    for (var j = 0; j < arrayLength; j++) {
-      if (sortedPosts[j] == undefined || sortedPosts[j] == null)
-        break;
+      // if the next unsorted date is higher than the highest date in the array, place at front of array
+      if (sortedDate < unsortedDate && j == 0) {
+        sortedArr.unshift(unsortedArr[i]);
+        continue;
+      }
 
-      const date1 = sortedPosts[j].data.date;
-      // continue to increment the sorted array until the new date is older than the sorted date
+      // continue to increment the sorted array until the new date is higher than the sorted date
       // place the current, sorted element into storage, place the new element into the current index in storage
       // then place the element in storage into the next index
-      if (date1 < date0) 
+      if (unsortedDate < sortedDate) 
         continue;
-      else {
-        storage0 = sortedPosts[j];
-        sortedPosts[j] = unsortedPosts[i];
-        if (sortedPosts[j+1] == undefined || sortedPosts[j+1] == null)
-          sortedPosts[j+1] = storage0;
-        else {
-
+      else if (sortedDate < unsortedDate) {
+        var storage: GrayMatterFile<string>[] = new Array();
+        while (j < sortedArr.length) {
+          const bin = sortedArr.pop();
+          if (bin !== undefined)
+            storage.push(bin);
+        }
+        while (0 < storage.length) {
+          const bin = storage.shift();
+          if (bin !== undefined)
+            sortedArr.push(bin);
         }
       }
     }
-
   }
-  console.log(sortedPosts);
-  return sortedPosts;
+  // loop through and print to npm console
+  for (var i = 0; i < sortedArr.length; i++) {
+    // if (sortedArr.at(i) !== undefined && sortedArr.at(i) !== null)
+      console.log(sortedArr[i].data.title);
+  }
+  return sortedArr;
 };
 
 const HomePage = () => {
