@@ -63,12 +63,23 @@ const sortPostData = (unsortedArr: GrayMatterFile<string>[]) => {
       }
     }
   }
-  // loop through and print to npm console
-  for (var i = 0; i < sortedArr.length; i++) {
-    // if (sortedArr.at(i) !== undefined && sortedArr.at(i) !== null)
-      console.log(sortedArr[i].data.title);
-  }
   return sortedArr;
+};
+
+const printPostList = (postList: GrayMatterFile<string>[]) => {
+  // loop through and print to npm console
+  for (var i = 0; i < postList.length; i++) {
+    const isNull = (postList.at(i) !== undefined && postList.at(i) !== null)
+    console.log(`[sort function] element ${i} is ${isNull}`);
+
+    if (postList.at(i) !== undefined && postList.at(i) !== null)
+      console.log(postList.shift()?.data.title);
+  }
+
+  // print 
+  console.log("[sort function] length of sorted array" + postList.length);
+
+  return 0;
 };
 
 const HomePage = () => {
@@ -76,6 +87,8 @@ const HomePage = () => {
   const unsortedPosts = postMetaData.map((slug) => {
     return getPostData(slug);
   });
+
+  // set sort
   const posts = sortPostData(unsortedPosts);
   const postPreviews = postMetaData.map((slug) => {
     const post = getPostData(slug);
@@ -84,9 +97,11 @@ const HomePage = () => {
       <Link href={`/posts/${slug}`}>
         <h1 className="text-xl font-bold hover:underline hover:text-red-400">{post.data.title}</h1>
       </Link>
-      <h2 className="text-xs text-gray-500">{postDate}</h2>
+      <h2 className="text-xs text-gray-500">{post.data.date.toDateString()}</h2>
       <h2 className="text-sm text-gray-200">{post.data.subtitle}</h2>
     </div>);
+
+
     return postPreview;
   });
   return <div>{postPreviews}</div>;
