@@ -21,65 +21,64 @@ const getPostData = (slug: string) => {
 // @returns sortedArr      GrayMatterFile[]    elements of markdown data sorted by most recent date     
 const sortPostData = (unsortedArr: GrayMatterFile<string>[]) => {
   const arrayLength = unsortedArr.length;
-  var sortedArr: GrayMatterFile<string>[] = new Array();
+  let sortedArr: GrayMatterFile<string>[] = new Array();
 
-  // loop through old array and compare dates to items in the sorted array
-  // on first index, immediately copy first element into sorted array
-  // loop through sorted array comparing to every element until appropriate spot is found
-  // move every element up one item until the array ends
-  for (var i = 0; i < arrayLength; i++) {
-    if (sortedArr.length = 0) {
+  printPostArr(unsortedArr);
+
+  for (let i = 0; i < unsortedArr.length; i++) {
+    if (i == 0) {
       sortedArr.push(unsortedArr[i]);
       continue;
     }
-    
-    for (var j = 0; j < sortedArr.length; j++) {
-      const unsortedDate = unsortedArr[i].data.date.getTime();
-      const sortedDate = sortedArr[j].data.date.getTime();
 
-      // if the next unsorted date is higher than the highest date in the array, place at front of array
-      if (sortedDate < unsortedDate && j == 0) {
-        sortedArr.unshift(unsortedArr[i]);
-        continue;
+    const unsortDate = unsortedArr[i].data.date.getTime();
+    for (let j = 0; j < sortedArr.length; j++) {
+      const sortDate = sortedArr[j].data.date.getTime();
+      if (unsortDate > sortDate && (sortedArr.length == 1 || sortedArr.length == j + 1)) {
+        sortedArr.push(unsortedArr[i]);
+        console.log(`pushed ${unsortedArr[i].data.title}`);
+        break;
       }
+      else if (unsortDate < sortDate && (sortedArr.length == 1 || j == 0)) {
+        sortedArr.unshift(unsortedArr[i]);
+        console.log(`pushed ${unsortedArr[i].data.title}`);
+        break;
+      }
+      else if (unsortDate > sortDate) {
+        var storage = new Array();
+        for (let n = j; n < sortedArr.length; n++) {
+          storage.push(sortedArr.pop());
+        }
 
-      // continue to increment the sorted array until the new date is higher than the sorted date
-      // place the current, sorted element into storage, place the new element into the current index in storage
-      // then place the element in storage into the next index
-      if (unsortedDate < sortedDate) 
+        sortedArr.push(unsortedArr[i]);
+        console.log(`pushed ${unsortedArr[i].data.title}`)
+        const strLn = storage.length;
+        for (let n = j; n < strLn; n++) {
+          sortedArr.push(storage.pop());
+        }
+        break;
+      }
+      else {
         continue;
-      else if (sortedDate < unsortedDate) {
-        var storage: GrayMatterFile<string>[] = new Array();
-        while (j < sortedArr.length) {
-          const bin = sortedArr.pop();
-          if (bin !== undefined)
-            storage.push(bin);
-        }
-        while (0 < storage.length) {
-          const bin = storage.shift();
-          if (bin !== undefined)
-            sortedArr.push(bin);
-        }
       }
     }
   }
+  console.log(`array sorted, length: ${sortedArr.length}`);
   return sortedArr;
 };
 
-const printPostList = (postList: GrayMatterFile<string>[]) => {
+const printPostArr = (postList: GrayMatterFile<string>[]) => {
+  console.log(`--------------------\nLength of array: ${postList.length}\n--------------------`)
   // loop through and print to npm console
-  for (var i = 0; i < postList.length; i++) {
-    const isNull = (postList.at(i) !== undefined && postList.at(i) !== null)
-    console.log(`[sort function] element ${i} is ${isNull}`);
-
-    if (postList.at(i) !== undefined && postList.at(i) !== null)
-      console.log(postList.shift()?.data.title);
+  for (let i = 0; i < postList.length; i++) {
+    const isNull = (postList.at(i) === undefined) || (postList.at(i) === null)
+    if (isNull)
+      console.log(`element ${i} is null`);
+    else {}
+      console.log(postList[i].data.title);
   }
-
-  // print 
-  console.log("[sort function] length of sorted array" + postList.length);
-
-  return 0;
+  console.log("");
+  return 1;
 };
 
 const HomePage = () => {
@@ -90,18 +89,18 @@ const HomePage = () => {
 
   // set sort
   const posts = sortPostData(unsortedPosts);
+  console.log(`[homepage] sort func success: ${(printPostArr(posts))}`);
+
+  // set preview html elements with post data
   const postPreviews = postMetaData.map((slug) => {
     const post = getPostData(slug);
-    const postDate = new Date(post.data.date).toDateString();
     const postPreview = (<div className="my-4 p-2 mx-auto max-w-2xl">
       <Link href={`/posts/${slug}`}>
         <h1 className="text-xl font-bold hover:underline hover:text-red-400">{post.data.title}</h1>
       </Link>
-      <h2 className="text-xs text-gray-500">{post.data.date.toDateString()}</h2>
+      <h2 className="text-xs text-red-400">{post.data.date.toDateString()}</h2>
       <h2 className="text-sm text-gray-200">{post.data.subtitle}</h2>
     </div>);
-
-
     return postPreview;
   });
   return <div>{postPreviews}</div>;
