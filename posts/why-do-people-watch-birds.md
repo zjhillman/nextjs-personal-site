@@ -1,4 +1,5 @@
 ---
+slug: why-do-people-watch-birds
 title: Why Do People Watch Birds?
 date: 2023-05-14
 subtitle: Bird watchers are straight up weird and here's why.

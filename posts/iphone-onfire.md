@@ -1,4 +1,5 @@
 ---
+slug: iphone-onfire
 title: iPhone 15 - Overheating Issues Explained!
 date: 2023-09-23
 subtitle: Some customers are facing global warming... in their pockets?

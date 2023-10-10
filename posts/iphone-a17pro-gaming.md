@@ -1,4 +1,5 @@
 ---
+slug: iphone-a17pro-gaming
 title: Can the new iPhone Really Handle Console Level Gaming?
 date: 2023-10-01
 subtitle: PS6 level games in the palm of your hand, rest in peace Steam Deck.

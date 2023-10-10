@@ -1,4 +1,5 @@
 ---
+slug: misinformation
 title: The Benefits of Spreading Misinformation
 date: 2023-07-05
 subtitle: People will believe it. Why not?

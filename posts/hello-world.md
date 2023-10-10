@@ -1,4 +1,5 @@
 ---
+slug: hello-world
 title: Hello World and the Awful Truth
 date: 2023-10-04
 subtitle: The creator the Linux operating system speaks his mind on programming's biggest tradition.

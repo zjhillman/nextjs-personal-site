@@ -63,7 +63,6 @@ const sortPostData = (unsortedArr: GrayMatterFile<string>[]) => {
       }
     }
   }
-  console.log(`array sorted, length: ${sortedArr.length}`);
   return sortedArr;
 };
 
@@ -91,18 +90,30 @@ const HomePage = () => {
   const posts = sortPostData(unsortedPosts);
   console.log(`[homepage] sort func success: ${(printPostArr(posts))}`);
 
-  // set preview html elements with post data
-  const postPreviews = postMetaData.map((slug) => {
-    const post = getPostData(slug);
+  // set previews
+  const postPreviews = posts.map((post) => {
     const postPreview = (<div className="my-4 p-2 mx-auto max-w-2xl">
-      <Link href={`/posts/${slug}`}>
+      <Link href={`/posts/${post.data.slug}`}>
         <h1 className="text-xl font-bold hover:underline hover:text-red-400">{post.data.title}</h1>
       </Link>
       <h2 className="text-xs text-red-400">{post.data.date.toDateString()}</h2>
       <h2 className="text-sm text-gray-200">{post.data.subtitle}</h2>
-    </div>);
+    </div>)
     return postPreview;
   });
+
+  // set preview html elements with post data
+  // const postPreviews = postMetaData.map((slug) => {
+  //   const post = getPostData(slug);
+  //   const postPreview = (<div className="my-4 p-2 mx-auto max-w-2xl">
+  //     <Link href={`/posts/${slug}`}>
+  //       <h1 className="text-xl font-bold hover:underline hover:text-red-400">{post.data.title}</h1>
+  //     </Link>
+  //     <h2 className="text-xs text-red-400">{post.data.date.toDateString()}</h2>
+  //     <h2 className="text-sm text-gray-200">{post.data.subtitle}</h2>
+  //   </div>);
+  //   return postPreview;
+  // });
   return <div>{postPreviews}</div>;
 };
 

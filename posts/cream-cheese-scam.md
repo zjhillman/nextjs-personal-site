@@ -1,4 +1,5 @@
 ---
+slug: cream-cheese-scam
 title: Is "Cream Cheese" Actually A Scam?
 date: 2023-07-03
 subtitle: Exposing the dark underworld of U.S. endorsed dairy products.
