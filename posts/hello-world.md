@@ -1,12 +1,11 @@
 ---
 slug: hello-world
-title: Hello World and the Awful Truth
+title: 'The Secret Society of "Hello, World!"'
 date: 2023-10-04
 subtitle: The creator the Linux operating system speaks his mind on programming's biggest tradition.
 author: "@RealLinusTorbalds"
 ---
 
-# The Secret Society of "Hello, World!"
 ![Linus plotting to overthrow the government of the world with the creation of Linux](images/html-hacker.jpg)
 
 Have you ever stopped to ponder why every beginner's coding tutorial starts with printing "Hello, World!"? It may seem like an innocent introduction to the programming world, but what if there's more than meets the eye?

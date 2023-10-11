@@ -1,12 +1,11 @@
 ---
 slug: cream-cheese-scam
-title: Is "Cream Cheese" Actually A Scam?
+title: "The Cream Cheese Conspiracy: A Wedding Debacle"
 date: 2023-07-03
 subtitle: Exposing the dark underworld of U.S. endorsed dairy products.
 author: "@LarryJohnson"
 ---
-  
-# The Cream Cheese Conspiracy: A Wedding Debacle
+
 ![Saying no to cream cheese](images/cream-cheese.jpg)
 
 Hello dear readers, it's Larry here. Most people have harrowing tales of wedding planning; they stress over finding the perfect venue or ensuring they have the best music. But me? My wedding planning horror story revolves around... cream cheese.

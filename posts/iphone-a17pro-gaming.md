@@ -1,12 +1,11 @@
 ---
 slug: iphone-a17pro-gaming
-title: Can the new iPhone Really Handle Console Level Gaming?
+title: 'Gaming on the iPhone 15 Pro: A Powerhouse in Your Pocket'
 date: 2023-10-01
 subtitle: PS6 level games in the palm of your hand, rest in peace Steam Deck.
 author: "@zachil"
 ---
 
-# Gaming on the iPhone 15 Pro: A Powerhouse in Your Pocket
 ![Resident Evil on the iPhone 15 Pro](images/iphone-re-village.jpg)
 
 Apple's iPhone series has always been a trendsetter, pushing the boundaries of what's possible in the realm of mobile technology. The iPhone 15 Pro, with its jaw-dropping specifications and features, positions itself as an undeniable beast for gaming enthusiasts.

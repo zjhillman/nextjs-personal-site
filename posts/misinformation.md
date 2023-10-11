@@ -1,12 +1,11 @@
 ---
 slug: misinformation
-title: The Benefits of Spreading Misinformation
+title: 'The Amazing Benefits of Spreading Misinformation: Unlocking the Power of Alternate Realities!'
 date: 2023-07-05
 subtitle: People will believe it. Why not?
 author: "@author"
 ---
 
-# The Amazing Benefits of Spreading Misinformation: Unlocking the Power of Alternate Realities!
 ![Misinformation making people angry](images/misinformation.jpg)
 
 In a world full of mundane truths and repetitive facts, have you ever considered the untapped potential of **misinformation**? Why be limited by reality when you can craft your own!

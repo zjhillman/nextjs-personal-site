@@ -1,12 +1,11 @@
 ---
 slug: iphone-onfire
-title: iPhone 15 - Overheating Issues Explained!
+title: 'The iPhone 15 Pro & Pro Max: Melting Hearts and... Themselves?'
 date: 2023-09-23
 subtitle: Some customers are facing global warming... in their pockets?
 author: "@zachil"
 ---
 
-# The iPhone 15 Pro & Pro Max: Melting Hearts and... Themselves?
 ![iPhone 15 Pro with fire emojis](images/iphone-on-fire.jpg)
 
 In the world of ever-evolving technology, Apple's iPhone series has consistently remained on the cutting edge. Their newest releases, the iPhone 15 Pro and 15 Pro Max, have certainly heated up discussions, both literally and figuratively. Rumor has it these phones get so hot they could give chocolates a run for their money!

@@ -6,7 +6,6 @@ subtitle: Discussing the loss of recognition and gen z
 author: "@FMCJames"
 ---
 
-# James Duncan Farleey Jr.'s Triumphs and Tribulations
 
 _By Totally Not A Real Journalist_
 
