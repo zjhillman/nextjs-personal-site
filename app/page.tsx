@@ -15,16 +15,15 @@ const getPostData = (slug: string) => {
   const file = matter.read(pathToFile);
   return file;
 };
-
+   
 // sort the input array of graymatter objects so that the highest (most recent) date is at the top
-// @var     unsortedArr    GrayMatterFile[]    contains markdown data as a GrayMatter plugin object
-// @returns sortedArr      GrayMatterFile[]    elements of markdown data sorted by most recent date     
+// @var     unsortedArr    GrayMatterFile[]    contains a GrayMatterFile (Markdown) Object Array in some order
+// @returns sortedArr      GrayMatterFile[]    contains a GrayMatterFile Object Array in descending order (most recent)    
 const sortPostData = (unsortedArr: GrayMatterFile<string>[]) => {
   const arrayLength = unsortedArr.length;
   let sortedArr: GrayMatterFile<string>[] = new Array();
 
-  printPostArr(unsortedArr);
-
+  // loop through the unsorted array and sorted array in linear order
   for (let i = 0; i < unsortedArr.length; i++) {
     if (i == 0) {
       sortedArr.push(unsortedArr[i]);
@@ -34,14 +33,14 @@ const sortPostData = (unsortedArr: GrayMatterFile<string>[]) => {
     const unsortDate = unsortedArr[i].data.date.getTime();
     for (let j = 0; j < sortedArr.length; j++) {
       const sortDate = sortedArr[j].data.date.getTime();
-      if (unsortDate > sortDate && (sortedArr.length == 1 || sortedArr.length == j + 1)) {
+      if (unsortDate < sortDate && (sortedArr.length == 1 || sortedArr.length == j + 1)) {
         sortedArr.push(unsortedArr[i]);
-        console.log(`pushed ${unsortedArr[i].data.title}`);
+        console.log(`pushed ${unsortedArr[i].data.title} at index ${j}`);
         break;
       }
-      else if (unsortDate < sortDate && (sortedArr.length == 1 || j == 0)) {
+      else if (unsortDate > sortDate && (sortedArr.length == 1 || j == 0)) {
         sortedArr.unshift(unsortedArr[i]);
-        console.log(`pushed ${unsortedArr[i].data.title}`);
+        console.log(`pushed ${unsortedArr[i].data.title} at index ${j}`);
         break;
       }
       else if (unsortDate > sortDate) {
@@ -51,9 +50,9 @@ const sortPostData = (unsortedArr: GrayMatterFile<string>[]) => {
         }
 
         sortedArr.push(unsortedArr[i]);
-        console.log(`pushed ${unsortedArr[i].data.title}`)
+        console.log(`pushed ${unsortedArr[i].data.title} at index ${j}`)
         const strLn = storage.length;
-        for (let n = j; n < strLn; n++) {
+        for (let n = 0; n < strLn; n++) {
           sortedArr.push(storage.pop());
         }
         break;
@@ -87,8 +86,10 @@ const HomePage = () => {
   });
 
   // set sort
+  console.log("\ninput array");
+  printPostArr(unsortedPosts);
   const posts = sortPostData(unsortedPosts);
-  console.log(`[homepage] sort func success: ${(printPostArr(posts))}`);
+  console.log(`[homepage] sort func returns: ${(printPostArr(posts))}`);
 
   // set previews
   const postPreviews = posts.map((post) => {
