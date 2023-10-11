@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   const header = (
     <header>
-      <div className="bg-red-700 rounded max-w-3xl mx-auto my-2 p-2 text-center ">
+      <div className="bg-red-700 rounded max-w-3xl mx-auto mb-2 p-2 text-center ">
         <Link href="/">
           <h1 className="text-xl font-bold hover:underline">Zach's Blog</h1> 
         </Link>

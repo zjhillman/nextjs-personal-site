@@ -6,7 +6,7 @@ subtitle: Bird watchers are straight up weird and here's why.
 author: "@Quircko"
 ---
 
-![A Bird](images/bird.jpg)
+![A Bird](/images/bird.jpg)
 
 Hello, dear denizens of the digital domain! It is I, Dr. Quirko, the world's most misunderstood genius. I've taken a break from crafting my magnificent inventions (that SOME may call "nefarious" plans) to address the travesty that is the adoration for... bird watchers and Spider-Man!
 

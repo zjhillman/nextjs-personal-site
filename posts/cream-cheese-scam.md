@@ -6,7 +6,7 @@ subtitle: Exposing the dark underworld of U.S. endorsed dairy products.
 author: "@LarryJohnson"
 ---
 
-![Saying no to cream cheese](images/cream-cheese.jpg)
+![Saying no to cream cheese](/images/cream-cheese.jpg)
 
 Hello dear readers, it's Larry here. Most people have harrowing tales of wedding planning; they stress over finding the perfect venue or ensuring they have the best music. But me? My wedding planning horror story revolves around... cream cheese.
 

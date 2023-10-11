@@ -6,7 +6,7 @@ subtitle: People will believe it. Why not?
 author: "@author"
 ---
 
-![Misinformation making people angry](images/misinformation.jpg)
+![Misinformation making people angry](/images/misinformation.jpg)
 
 In a world full of mundane truths and repetitive facts, have you ever considered the untapped potential of **misinformation**? Why be limited by reality when you can craft your own!
 

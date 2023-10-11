@@ -6,7 +6,7 @@ subtitle: The creator the Linux operating system speaks his mind on programming'
 author: "@RealLinusTorbalds"
 ---
 
-![Linus plotting to overthrow the government of the world with the creation of Linux](images/html-hacker.jpg)
+![Linus plotting to overthrow the government of the world with the creation of Linux](/images/html-hacker.jpg)
 
 Have you ever stopped to ponder why every beginner's coding tutorial starts with printing "Hello, World!"? It may seem like an innocent introduction to the programming world, but what if there's more than meets the eye?
 
