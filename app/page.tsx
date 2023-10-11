@@ -20,7 +20,6 @@ const getPostData = (slug: string) => {
 // @var     unsortedArr    GrayMatterFile[]    contains a GrayMatterFile (Markdown) Object Array in some order
 // @returns sortedArr      GrayMatterFile[]    contains a GrayMatterFile Object Array in descending order (most recent)    
 const sortPostData = (unsortedArr: GrayMatterFile<string>[]) => {
-  const arrayLength = unsortedArr.length;
   let sortedArr: GrayMatterFile<string>[] = new Array();
 
   // loop through the unsorted array and sorted array in linear order
@@ -35,12 +34,12 @@ const sortPostData = (unsortedArr: GrayMatterFile<string>[]) => {
       const sortDate = sortedArr[j].data.date.getTime();
       if (unsortDate < sortDate && (sortedArr.length == 1 || sortedArr.length == j + 1)) {
         sortedArr.push(unsortedArr[i]);
-        console.log(`pushed ${unsortedArr[i].data.title} at index ${j}`);
+        // console.log(`pushed ${unsortedArr[i].data.title} at index ${j}`);
         break;
       }
       else if (unsortDate > sortDate && (sortedArr.length == 1 || j == 0)) {
         sortedArr.unshift(unsortedArr[i]);
-        console.log(`pushed ${unsortedArr[i].data.title} at index ${j}`);
+        // console.log(`pushed ${unsortedArr[i].data.title} at index ${j}`);
         break;
       }
       else if (unsortDate > sortDate) {
@@ -50,7 +49,7 @@ const sortPostData = (unsortedArr: GrayMatterFile<string>[]) => {
         }
 
         sortedArr.push(unsortedArr[i]);
-        console.log(`pushed ${unsortedArr[i].data.title} at index ${j}`)
+        // console.log(`pushed ${unsortedArr[i].data.title} at index ${j}`)
         const strLn = storage.length;
         for (let n = 0; n < strLn; n++) {
           sortedArr.push(storage.pop());
@@ -86,13 +85,13 @@ const HomePage = () => {
   });
 
   // set sort
-  console.log(`jd power: + ${unsortedPosts[1]}`);
+  // console.log(`jd power: + ${unsortedPosts[1]}`);
   const posts = sortPostData(unsortedPosts);
-  console.log(`[homepage] sort func returns: ${(printPostArr(posts))}`);
+  // console.log(`[homepage] sort func returns: ${(printPostArr(posts))}`);
 
   // set previews
   const postPreviews = posts.map((post) => {
-    const postPreview = (<div className="my-4 p-2 mx-auto max-w-2xl">
+    const postPreview = (<div className="mb-[0.50rem] p-2 mx-auto max-w-2xl">
       <Link href={`/posts/${post.data.slug}`}>
         <h1 className="text-xl font-bold hover:underline hover:text-red-400">{post.data.title}</h1>
       </Link>
@@ -101,19 +100,6 @@ const HomePage = () => {
     </div>)
     return postPreview;
   });
-
-  // set preview html elements with post data
-  // const postPreviews = postMetaData.map((slug) => {
-  //   const post = getPostData(slug);
-  //   const postPreview = (<div className="my-4 p-2 mx-auto max-w-2xl">
-  //     <Link href={`/posts/${slug}`}>
-  //       <h1 className="text-xl font-bold hover:underline hover:text-red-400">{post.data.title}</h1>
-  //     </Link>
-  //     <h2 className="text-xs text-red-400">{post.data.date.toDateString()}</h2>
-  //     <h2 className="text-sm text-gray-200">{post.data.subtitle}</h2>
-  //   </div>);
-  //   return postPreview;
-  // });
   return <div>{postPreviews}</div>;
 };
 

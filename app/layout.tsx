@@ -15,9 +15,25 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const neoHeader = (
+    <header className="bg-red-700 rounded max-w-3xl mx-auto p-2 text-center">
+      <div className="flex font-extrabold">
+        <div className="ml-auto">
+          <Link href="/">
+            <h1 className="hover:underline text-xl">Zach's Blog</h1> 
+          </Link>
+          <p className="text-sm">🔥Welcome to my blog 💻</p>
+        </div>
+        <div className="place-content-end ml-auto mr-0 my-auto text-lg">
+          <p>More</p>
+        </div>
+      </div>
+    </header>
+  )
+
   const header = (
     <header>
-      <div className="bg-red-700 rounded max-w-3xl mx-auto mb-2 p-2 text-center ">
+      <div className="bg-red-700 rounded max-w-3xl mx-auto p-2 text-center ">
         <Link href="/">
           <h1 className="text-xl font-bold hover:underline">Zach's Blog</h1> 
         </Link>
@@ -38,7 +54,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div>
-          {header}
+          {neoHeader}
           {children}
           {footer}
         </div>
