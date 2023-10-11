@@ -86,8 +86,7 @@ const HomePage = () => {
   });
 
   // set sort
-  console.log("\ninput array");
-  printPostArr(unsortedPosts);
+  console.log(`jd power: + ${unsortedPosts[1]}`);
   const posts = sortPostData(unsortedPosts);
   console.log(`[homepage] sort func returns: ${(printPostArr(posts))}`);
 
