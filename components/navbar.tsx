@@ -12,23 +12,24 @@ const Navbar = () => {
             viewBox="0 0 90 90" 
             xmlns="http://www.w3.org/2000/svg" 
             onClick={() => setIsAnimated(!isAnimated)}
-            className="transition-all duration-300"
         >
             <line 
                 x1="20" 
-                y1={isAnimated ? "35" : "35"} 
+                y1="35"
                 x2="70" 
-                y2={isAnimated ? "55" : "35"} 
+                y2="35"
                 stroke="black" 
-                strokeWidth="3" 
+                strokeWidth="3"
+                className={`transform duration-300 ${isAnimated ? 'rotate-45 translate-x-9 -translate-y-2' : ''}`}
             />
             <line 
                 x1="20" 
-                y1={isAnimated ? "55" : "55"} 
+                y1="55"
                 x2="70" 
-                y2={isAnimated ? "35" : "55"} 
+                y2="55"
                 stroke="black" 
                 strokeWidth="3"
+                className={`transform duration-300 ${isAnimated ? '-rotate-45 -translate-x-7 translate-y-10' : ''}`}
             />
         </svg>
     );
