@@ -49,8 +49,11 @@ export default function RootLayout({
   const footer = (
     <footer>
       <div className="bg-slate-800 mt-4 p-2 text-center rounded-t mx-auto">
-        <h3 className="text-sm text-slate-200">Developed in collaboration with the United States Airforce ✈️</h3>
-        <p className="text-xs text-slate-400">(jk government)</p>
+        <h3 className="text-sm text-slate-200">Developed by Zachary Hillman.</h3>
+        <p className="text-xs text-slate-400">Since {new Date("2023-10-04").toDateString()}</p>
+        <Link href="https://github.com/zjhillman/nextjs-blog-site">
+          <p className="text-xs text-slate-600">https://github.com/zjhillman/nextjs-blog-site</p>
+        </Link>
       </div>
     </footer>
   )

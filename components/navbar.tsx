@@ -20,7 +20,7 @@ const Navbar = () => {
                 x2="70" 
                 y2={isAnimated ? "55" : "35"} 
                 stroke="black" 
-                stroke-width="3" 
+                strokeWidth="3" 
             />
             <line 
                 x1="20" 
@@ -28,7 +28,7 @@ const Navbar = () => {
                 x2="70" 
                 y2={isAnimated ? "35" : "55"} 
                 stroke="black" 
-                stroke-width="3"
+                strokeWidth="3"
             />
         </svg>
     );
