@@ -2,7 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
-import HamburgerMenuButton from '@/components/HamburgerMenuButton'
+import HamburgerButton from '@/components/HamburgerButton'
+import TickerFeed from '@/components/TickerFeed'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,34 +17,33 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const neoHeader = (
+  const header = (
     <header className="bg-red-700 rounded-b mx-auto p-2 text-center">
       <div className="flex font-extrabold">
         <div className="my-auto mx-0">
-          <HamburgerMenuButton />
+          <HamburgerButton />
         </div>
         <div className="m-auto">
           <Link href="/">
             <h1 className="hover:underline text-xl">Home</h1> 
           </Link>
-          <p className="text-sm">🔥Welcome to my blog 💻</p>
         </div>
-        <div className="place-content-end mx-0 my-auto text-lg">
-          <p>More</p>
+        <div className="place-content-end mx-0 my-auto">
+          <HamburgerButton />
         </div>
       </div>
     </header>
-  )
+  );
 
-  const header = (
-    <header>
-      <div className="bg-red-700 rounded max-w-3xl mx-auto p-2 text-center ">
-        <Link href="/">
-          <h1 className="text-xl font-bold hover:underline">Zach's Blog</h1> 
-        </Link>
-        <p className="text-sm">🔥Welcome to my blog 💻</p>
-      </div>
-    </header>
+  const tickerFeed = (
+    <div className="m-auto">
+      <TickerFeed>
+        🔥 Welcome to my blog 🔥 
+        I write articles about technology and gaming 💻, two of my favorite passions. 
+        I put this website together myself using NextJS.
+        If you have any feedback please submit at the bottom of the page.
+      </TickerFeed>
+    </div>
   );
 
   const footer = (
@@ -56,12 +56,14 @@ export default function RootLayout({
         </Link>
       </div>
     </footer>
-  )
+  );
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <div>
-          {neoHeader}
+          {header}
+          {tickerFeed}
           {children}
           {footer}
         </div>

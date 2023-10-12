@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-const HamburgerMenuButton = () => {
+const HamburgerButton = () => {
     const [isAnimated, setIsAnimated] = useState(false);
 
     return (
@@ -29,10 +29,10 @@ const HamburgerMenuButton = () => {
                 y2="55"
                 stroke="black" 
                 strokeWidth="3"
-                className={`transform duration-300 ${isAnimated ? '-rotate-45 -translate-x-7 translate-y-9' : ''}`}
+                className={`transform duration-300 ${isAnimated ? '-rotate-45 -translate-x-[1.6875rem] translate-y-[2.3125rem]' : ''}`}
             />
         </svg>
     );
 };
 
-export default HamburgerMenuButton;
+export default HamburgerButton;

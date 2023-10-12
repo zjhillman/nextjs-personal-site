@@ -13,6 +13,19 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      animation: {
+        ticker: "ticker 30s linear infinite",
+      },
+      keyframes: {
+        ticker: {
+          "0%": {
+            transform: 'translateX(0)',
+          },
+          "100%": {
+            transform: 'translateX(-100%)',
+          }
+        }
+      },
     },
   },
   plugins: [
