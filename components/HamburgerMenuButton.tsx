@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-const Navbar = () => {
+const HamburgerMenuButton = () => {
     const [isAnimated, setIsAnimated] = useState(false);
 
     return (
@@ -20,7 +20,7 @@ const Navbar = () => {
                 y2="35"
                 stroke="black" 
                 strokeWidth="3"
-                className={`transform duration-300 ${isAnimated ? 'rotate-45 translate-x-9 -translate-y-2' : ''}`}
+                className={`transform duration-300 ${isAnimated ? 'rotate-45 translate-x-9 -translate-y-3' : ''}`}
             />
             <line 
                 x1="20" 
@@ -29,10 +29,10 @@ const Navbar = () => {
                 y2="55"
                 stroke="black" 
                 strokeWidth="3"
-                className={`transform duration-300 ${isAnimated ? '-rotate-45 -translate-x-7 translate-y-10' : ''}`}
+                className={`transform duration-300 ${isAnimated ? '-rotate-45 -translate-x-7 translate-y-9' : ''}`}
             />
         </svg>
     );
 };
 
-export default Navbar;
+export default HamburgerMenuButton;

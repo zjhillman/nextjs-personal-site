@@ -2,7 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
-import Navbar from '@/components/navbar'
+import HamburgerMenuButton from '@/components/HamburgerMenuButton'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +20,7 @@ export default function RootLayout({
     <header className="bg-red-700 rounded-b mx-auto p-2 text-center">
       <div className="flex font-extrabold">
         <div className="my-auto mx-0">
-          <Navbar />
+          <HamburgerMenuButton />
         </div>
         <div className="m-auto">
           <Link href="/">
