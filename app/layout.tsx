@@ -18,15 +18,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const header = (
-    <header className="bg-red-700 rounded-b mx-auto p-2 text-center">
+    <header className="bg-red-700 rounded-b w-screen p-2 text-center">
       <div className="flex font-extrabold">
         <div className="my-auto mx-0">
           <HamburgerButton />
         </div>
-        <div className="m-auto">
-          <Link href="/">
-            <h1 className="hover:underline text-xl">Home</h1> 
-          </Link>
+        <div className="my-auto w-screen flex text-xl justify-around p-2">
+          <Link href="/" className="hover:underline">Home</Link>
+          <Link href="/" className="hover:underline">Posts</Link>
+          <Link href="/" className="hover:underline">Lyrics</Link>
+          <Link href="/about" className="hover:underline">About</Link>
         </div>
         <div className="place-content-end mx-0 my-auto">
           <HamburgerButton />
@@ -36,7 +37,7 @@ export default function RootLayout({
   );
 
   const tickerFeed = (
-    <div className="m-auto">
+    <div className=" text-gray-200 w-screen">
       <TickerFeed>
         🔥 Welcome to my blog 🔥 
         I write articles about technology and gaming 💻, two of my favorite passions. 
@@ -48,7 +49,7 @@ export default function RootLayout({
 
   const footer = (
     <footer>
-      <div className="bg-slate-800 mt-4 p-2 text-center rounded-t mx-auto">
+      <div className="bg-slate-800 p-2 text-center rounded-t w-screen mt-auto">
         <h3 className="text-sm text-slate-200">Developed by Zachary Hillman.</h3>
         <p className="text-xs text-slate-400">Since {new Date("2023-10-04").toDateString()}</p>
         <Link href="https://github.com/zjhillman/nextjs-blog-site">
@@ -60,8 +61,8 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div>
+      <body className={inter.className + " h-full w-full"}>
+        <div className="">
           {header}
           {tickerFeed}
           {children}
