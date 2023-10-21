@@ -1,14 +1,15 @@
 'use client'
 
 import { useState } from 'react';
+import React from 'react'
 
-const HamburgerButton = () => {
+const HamburgerButton = (props: any) => {
     const [isAnimated, setIsAnimated] = useState(false);
 
     return (
         <svg 
-            width="50" 
-            height="50" 
+            width={props.width ? props.width : "50"} 
+            height={props.height ? props.height : "50"} 
             viewBox="0 0 90 90" 
             xmlns="http://www.w3.org/2000/svg" 
             onClick={() => setIsAnimated(!isAnimated)}
